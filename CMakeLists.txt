@@ -5,13 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-DASIO_STANDALONE)
 
-include_directories(C:/ASIO/asio-1.12.2/include C:/Users/michalh/CLionProjects/includes)
-
 add_executable(ASIO_test_client main.cpp TCPClient.h TCPClient.cpp)
 
 if(WIN32)
+    include_directories(C:/ASIO/asio-1.12.2/include C:/Users/michalh/CLionProjects/includes)
     target_link_libraries(ASIO_test_client wsock32 ws2_32)
-endif()
+endif(WIN32)
 if(UNIX)
-    target_link_libraries(ASIO_test_client rt)
-endif()
+    include_directories(/root/CLionProjects/ASIO/asio-1.12.2/include/ /root/CLionProjects/includes/)
+    target_link_libraries(ASIO_test_client pthread)
+endif(UNIX)
