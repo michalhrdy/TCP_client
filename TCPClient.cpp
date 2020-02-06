@@ -126,9 +126,7 @@ void TCPClient::Write() {
 //        }
 //        Read();
 //    };
-    if(selected_command_ == service_table.size()) {
-        return;
-    }
+
     asio::async_write(socket_, asio::buffer(message_to_send_),
             std::bind(&TCPClient::HandleWrite, this,
                     std::placeholders::_1,
