@@ -126,7 +126,7 @@ void TCPClient::Write() {
 //        }
 //        Read();
 //    };
-    if(selected_command_ == services.size()) {
+    if(selected_command_ == service_table.size()) {
         return;
     }
     asio::async_write(socket_, asio::buffer(message_to_send_),
@@ -149,7 +149,7 @@ void TCPClient::ShowMenu() {
     std::cout << "Choose request: " << std::endl;
     unsigned int index = 1;
 
-    for(auto it = services.begin(); it != services.end(); ++it) {
+    for(auto it = service_table.begin(); it != service_table.end(); ++it) {
         std::cout << index << " - " << it->second << std::endl;
         ++index;
     }
@@ -159,10 +159,10 @@ void TCPClient::ReadCommandFromConsole() {
     ShowMenu();
     std::cin >> selected_command_;
 
-    if(selected_command_ > services.size()) {
+    if(selected_command_ > service_table.size()) {
         std::cout << "Invalid input." << std::endl;
         ReadCommandFromConsole();
     } else {
-        message_to_send_ = services[selected_command_-1].first + CParams.message_delimiter;
+        message_to_send_ = service_table[selected_command_-1].first + CParams.message_delimiter;
     }
 }
