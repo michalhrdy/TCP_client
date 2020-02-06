@@ -53,7 +53,7 @@ private:
     //Asynchronously writes data to socket_
     void Write();
     //Write handler - Calls Read() after Write() finished writing to socket_
-    void HandleWrite(const asio::error_code& /*error*/, size_t /*bytes_transferred*/);
+    void HandleWrite(const asio::error_code& error, std::size_t bytes_transferred);
     //Displays available commands in console
     void ShowMenu();
     //Reads selected command from console
