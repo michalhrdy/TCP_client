@@ -8,7 +8,7 @@ add_definitions(-DASIO_STANDALONE)
 add_executable(ASIO_test_client main.cpp TCPClient.h TCPClient.cpp)
 
 if(WIN32)
-    include_directories(C:/ASIO/asio-1.12.2/include C:/Users/michalh/CLionProjects/includes)
+    include_directories(C:/Users/michalh/CLionProjects/ASIO/asio-1.12.2/include C:/Users/michalh/CLionProjects/includes)
     target_link_libraries(ASIO_test_client wsock32 ws2_32)
 endif(WIN32)
 if(UNIX)
