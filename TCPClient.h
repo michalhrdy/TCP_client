@@ -40,7 +40,7 @@ private:
     //Connection retry count
     unsigned int retry_count_ = 0;
 
-    void HandleResolve(const asio::error_code& error,
+    void HandleResolve(const std::error_code& error,
                        tcp::resolver::results_type results);
 
     void HandleConnect(const asio::error_code& error,

@@ -12,6 +12,8 @@ TCPClient::TCPClient(asio::io_context &io_context, std::string adress, std::stri
 }
 
 TCPClient::~TCPClient() {
+    socket_.shutdown(asio::ip::tcp::socket::shutdown_both);
+    socket_.close();
     std::cout << "Client Closed" << std::endl;
 }
 
